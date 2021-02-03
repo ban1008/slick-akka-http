@@ -16,8 +16,6 @@ import scala.concurrent.duration.DurationInt
 
 class RestServiceTest extends AnyWordSpec with Matchers with ScalatestRouteTest with JsonHelper with BeforeAndAfter {
 
-  implicit def default(implicit system: ActorSystem) = RouteTestTimeout(new DurationInt(5).second.dilated(system))
-
   private val injector = Guice.createInjector(new AbstractModule() {
     override def configure() {
       bind(classOf[StudentRepository]).to(classOf[StudentRepositoryTestImpl])
